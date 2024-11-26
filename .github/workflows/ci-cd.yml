@@ -25,6 +25,16 @@ jobs:
       - name: Clone Spring Boot API Repository
         run: |
           git clone https://github.com/SKOTOS99/backend-unittest.git springboot-api
+      # Instalar Maven para compilar el proyecto Java
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build JAR
+        working-directory: roadmapjava
+        run: mvn clean package
 
       # Instalar Docker Compose
       - name: Install Docker Compose
