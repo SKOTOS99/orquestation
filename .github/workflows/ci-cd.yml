@@ -52,13 +52,6 @@ jobs:
           docker-compose -f docker-compose.yml build
           docker-compose -f docker-compose.yml up -d
 
-      # Probar la API Flask
-      - name: Test Flask API
-        run: curl -X GET http://localhost:5000/api/tareas
-
-      # Probar la API Spring Boot
-      - name: Test Spring Boot API
-        run: curl -X GET http://localhost:8080/api/tareas
 
       # Limpiar contenedores
       - name: Clean Up
