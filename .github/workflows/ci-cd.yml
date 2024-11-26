@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Orchestrator Repository
+        uses: actions/checkout@v2
+
       # Clonar el repositorio Flask
       - name: Clone Flask API Repository
         run: |
-          git clone https://github.com/SKOTOS99/roadmap-python.git flask-api
+          git clone https://github.com/SKOTOS99/roadmap-python.git roadmap
 
       # Clonar el repositorio Spring Boot
       - name: Clone Spring Boot API Repository
