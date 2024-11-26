@@ -16,12 +16,12 @@ jobs:
       # Clonar el repositorio Flask
       - name: Clone Flask API Repository
         run: |
-          git clone https://github.com/SKOTOS99/roadmap-python.git
+          git clone https://github.com/SKOTOS99/roadmap-python.git flask-api
 
       # Clonar el repositorio Spring Boot
       - name: Clone Spring Boot API Repository
         run: |
-          git clone https://github.com/SKOTOS99/backend-unittest.git
+          git clone https://github.com/SKOTOS99/backend-unittest.git springboot-api
 
       # Instalar Docker Compose
       - name: Install Docker Compose
@@ -32,8 +32,8 @@ jobs:
       # Construir y levantar contenedores
       - name: Build and Run Containers
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml up -d
+          docker-compose -f ./docker-compose.yml build
+          docker-compose -f ../docker-compose.yml up -d
 
       # Probar la API Flask
       - name: Test Flask API

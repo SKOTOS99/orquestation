@@ -2,7 +2,7 @@ version: "3.8"
 services:
   flask-api:
     build:
-      context: ./backend/flask-api  # Carpeta que contendrá el proyecto Flask clonado
+      context: ./backend  # Carpeta que contendrá el proyecto Flask clonado
     ports:
       - "5000:5000"
     networks:
