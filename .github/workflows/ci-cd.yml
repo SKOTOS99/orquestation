@@ -31,6 +31,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
+      - name: List Files
+        run: ls -R
 
       # Construir y levantar contenedores
       - name: Build and Run Containers
