@@ -32,8 +32,8 @@ jobs:
       # Construir y levantar contenedores
       - name: Build and Run Containers
         run: |
-          docker-compose -f ./docker-compose.yml build
-          docker-compose -f ../docker-compose.yml up -d
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml up -d
 
       # Probar la API Flask
       - name: Test Flask API
