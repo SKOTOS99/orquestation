@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clonar el repositorio Flask
+      - name: Clone Flask API Repository
+        run: |
+          git clone https://github.com/SKOTOS99/roadmap-python.git
+
+      # Clonar el repositorio Spring Boot
+      - name: Clone Spring Boot API Repository
+        run: |
+          git clone https://github.com/SKOTOS99/backend-unittest.git
+
+      # Instalar Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      # Construir y levantar contenedores
+      - name: Build and Run Containers
+        run: |
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml up -d
+
+      # Probar la API Flask
+      - name: Test Flask API
+        run: curl -X GET http://localhost:5000/api/tareas
+
+      # Probar la API Spring Boot
+      - name: Test Spring Boot API
+        run: curl -X GET http://localhost:8080/api/tareas
+
+      # Limpiar contenedores
+      - name: Clean Up
+        run: docker-compose down
